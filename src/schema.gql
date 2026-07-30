@@ -1,0 +1,82 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type OneUserResponse {
+  _id: ID!
+  firstName: String!
+  lastName: String!
+  username: String!
+  email: String!
+  password: String
+  phone: String
+  profilePicture: String
+  profileCoverPictures: [String!]
+  lang: LanguageEnum!
+  gender: GenderEnum!
+  role: RoleEnum!
+  provider: ProviderEnum!
+  changeCredentialsTime: String
+  DOB: String
+  confirmEmail: String
+  createdAt: String
+  updatedAt: String!
+  deletedAt: String
+  restoredAt: String
+}
+
+enum LanguageEnum {
+  EN
+  AR
+}
+
+enum GenderEnum {
+  MALE
+  FEMALE
+}
+
+enum RoleEnum {
+  USER
+  ADMIN
+}
+
+enum ProviderEnum {
+  SYSTEM
+  GOOGLE
+}
+
+type OneProductResponse {
+  _id: ID!
+  name: String!
+  description: String!
+  slug: String!
+  productId: String!
+  image: String!
+  gallery: [String!]
+  stock: Int!
+  rating: Int
+  originalPrice: Float!
+  salePrice: Float!
+  discountPercent: Float!
+  finalPrice: Float!
+  categoryId: ID!
+  brandId: ID!
+  notifyUsers: [ID!]
+  createdBy: OneUserResponse!
+  updatedBy: ID
+  createdAt: String!
+  updatedAt: String
+  deletedAt: String
+  restoredAt: String
+}
+
+type PaginateProductsResponse {
+  docs: [OneProductResponse!]!
+  currentPage: Int
+  pages: Int
+  size: Int
+}
+
+type Query {
+  allProducts(page: Int, size: Int, search: String): PaginateProductsResponse!
+}
